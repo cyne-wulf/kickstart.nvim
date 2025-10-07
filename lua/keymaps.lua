@@ -51,4 +51,66 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+-- CUSTOM AREA
+
+-- Map 'jk' and 'kj' to exit insert mode
+vim.api.nvim_set_keymap('i', 'jk', '<Esc>', { noremap = true, silent = true, desc = 'Exit insert mode with jk' })
+vim.api.nvim_set_keymap('i', 'kj', '<Esc>', { noremap = true, silent = true, desc = 'Exit insert mode with kj' })
+
+-- Leader Key Macros:
+vim.keymap.set('n', '<leader>w', ':w<CR>', { desc = 'Save file' })
+
+vim.keymap.set('n', '<leader>bn', ':bnext<CR>', { desc = '[B]uffer [N]ext' })
+vim.keymap.set('n', '<leader>n', ':bnext<CR>', { desc = '[B]uffer [N]ext (faster)' })
+
+vim.keymap.set('n', '<leader>bp', ':bprevious<CR>', { desc = '[B]uffer [P]revious' })
+vim.keymap.set('n', '<leader>bd', ':bdelete<CR>', { desc = '[B]uffer [D]elete' })
+vim.keymap.set('n', '<leader>d', ':bdelete<CR>', { desc = '[B]uffer [D]elete (faster)' })
+
+-- -------------
+
+-- Your other commented out "fat fingering" binds (if you want to re-enable any):
+-- vim.api.nvim_set_keymap('i', 'fd', '<Esc>', { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('i', 'hj', '<Esc>', { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('i', 'kl', '<Esc>', { noremap = true, silent = true })
+
+-- --- ADDED: Helix-style clipboard mappings ---
+-- Use 'g' prefix for system clipboard operations, leaving default y/p/d for internal registers.
+-- In Neovim, `"+` is the system clipboard register.
+local map = vim.keymap.set
+-- Normal mode
+map('n', 'gy', '"+y', { desc = '[G]lobal Yank to system clipboard' })
+map('n', 'gp', '"+p', { desc = '[G]lobal Paste after from system clipboard' })
+map('n', 'gP', '"+P', { desc = '[G]lobal Paste before from system clipboard' })
+-- Visual mode
+map('v', 'gy', '"+y', { desc = '[G]lobal Yank selection to system clipboard' })
+map('v', 'gp', '"+p', { desc = '[G]lobal Paste over selection from system clipboard' })
+-- ---------------------------------------------
+
+-- LEGACY CLIPBOARD BEHAVIOR START --------------------------------------------------------------
+
+-- Allow clipboard copy paste in neovim (Neovide specific for <D-*> keys)
+-- vim.g.neovide_input_use_logo = 1
+
+-- Paste
+-- vim.api.nvim_set_keymap('', '<D-v>', '+p<CR>', { noremap = true, silent = true, desc = 'Paste from clipboard' })
+-- vim.api.nvim_set_keymap('!', '<D-v>', '<C-R>+', { noremap = true, silent = true, desc = 'Paste from clipboard in Command-line' })
+-- vim.api.nvim_set_keymap('t', '<D-v>', '<C-R>+', { noremap = true, silent = true, desc = 'Paste from clipboard in Terminal mode' })
+-- vim.api.nvim_set_keymap('v', '<D-v>', '<C-R>+', { noremap = true, silent = true, desc = 'Paste from clipboard in Visual mode' })
+
+-- Copy
+-- vim.api.nvim_set_keymap('v', '<D-c>', '"+y', { noremap = true, silent = true, desc = 'Copy to clipboard' })
+-- vim.api.nvim_set_keymap('n', '<D-c>', '"+yy', { noremap = true, silent = true, desc = 'Copy current line to clipboard' })
+
+-- Cut
+-- vim.api.nvim_set_keymap('v', '<D-x>', '"+d', { noremap = true, silent = true, desc = 'Cut to clipboard' })
+-- vim.api.nvim_set_keymap('n', '<D-x>', '"+dd', { noremap = true, silent = true, desc = 'Cut current line to clipboard' })
+--
+
+-- END LEGACY CLIPBOARD BEHAVIOR BLOCK ---------------------------------------------------------------
+
+-- Oil Keymap
+vim.keymap.set('n', '-', '<CMD>Oil<CR>', { desc = 'Open parent directory' })
+
+-- ALWAYS LEAVE BOTTOM ALONE
 -- vim: ts=2 sts=2 sw=2 et

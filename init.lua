@@ -91,7 +91,8 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- Set to true if you have a Nerd Font installed and selected in the terminal
-vim.g.have_nerd_font = false
+vim.g.have_nerd_font = true
+vim.g.neovide_opacity = 0.75 -- 0 = fully transparent, 1 = fully opaque
 
 -- [[ Setting options ]]
 require 'options'

@@ -30,6 +30,9 @@ return {
       'saghen/blink.cmp',
     },
     config = function()
+      local lspconfig = require 'lspconfig'
+      local capabilities = require('blink.cmp').get_lsp_capabilities()
+
       -- Brief aside: **What is LSP?**
       --
       -- LSP is an initialism you've probably heard, but might not understand what it is.
@@ -208,10 +211,17 @@ return {
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
-        -- clangd = {},
+        clangd = {},
+        emmet_ls = { filetypes = { 'html', 'css', 'typescriptreact', 'javascriptreact' } },
         -- gopls = {},
         -- pyright = {},
-        -- rust_analyzer = {},
+        rust_analyzer = {},
+        biome = {},
+        tinymist = {
+          settings = {
+            exportPdf = 'never', -- change to "onSave" if you want auto export
+          },
+        },
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
         -- Some languages (like typescript) have entire language plugins that can be useful:
@@ -235,6 +245,7 @@ return {
             },
           },
         },
+        html = {},
       }
 
       -- Ensure the servers and tools above are installed
