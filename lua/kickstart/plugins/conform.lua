@@ -39,7 +39,8 @@ return {
         python = { 'isort', 'black' },
         javascript = { 'prettierd', 'prettier', stop_after_first = true },
         rust = { 'rustfmt' },
-        sql = { 'pg_format' },
+        -- sql = { 'pg_format' },
+        sql = { 'sqlfluff' },
 
         -- c = { 'clang_format' },
         -- cpp = { 'clang_format' },

@@ -68,6 +68,24 @@ vim.keymap.set('n', '<leader>bd', ':bdelete<CR>', { desc = '[B]uffer [D]elete' }
 vim.keymap.set('n', '<leader>d', ':bdelete<CR>', { desc = '[B]uffer [D]elete (faster)' })
 
 -- -------------
+-- Mini Surround Keybinds
+
+vim.api.nvim_create_autocmd('User', {
+  pattern = 'VeryLazy',
+  callback = function()
+    local ok, surround = pcall(require, 'mini.surround')
+    if not ok then
+      return
+    end
+    local map = vim.keymap.set
+    map('n', 'gsa', surround.add, { desc = 'Add surround' })
+    map('n', 'gsd', surround.delete, { desc = 'Delete surround' })
+    map('n', 'gsr', surround.replace, { desc = 'Replace surround' })
+    map('n', 'gsf', surround.find, { desc = 'Find surround forward' })
+    map('n', 'gsh', surround.highlight, { desc = 'Highlight surround' })
+    map('n', 'gsn', surround.update_n_lines, { desc = 'Update search n_lines' })
+  end,
+})
 
 -- Your other commented out "fat fingering" binds (if you want to re-enable any):
 -- vim.api.nvim_set_keymap('i', 'fd', '<Esc>', { noremap = true, silent = true })
