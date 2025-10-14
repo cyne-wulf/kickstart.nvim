@@ -57,6 +57,11 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 vim.api.nvim_set_keymap('i', 'jk', '<Esc>', { noremap = true, silent = true, desc = 'Exit insert mode with jk' })
 vim.api.nvim_set_keymap('i', 'kj', '<Esc>', { noremap = true, silent = true, desc = 'Exit insert mode with kj' })
 
+-- Maps j and k to move by visual lines, meaning if word wrap has made many "virtual lines" out of a single line, you can move up and down within the single line.
+-- (May break some advanced motions, but very helpful for editing text like I am in typst)
+vim.keymap.set('n', 'j', 'gj', { desc = 'Move down by visual line' })
+vim.keymap.set('n', 'k', 'gk', { desc = 'Move up by visual line' })
+
 -- Leader Key Macros:
 vim.keymap.set('n', '<leader>w', ':w<CR>', { desc = 'Save file' })
 
