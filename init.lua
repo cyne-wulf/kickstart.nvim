@@ -100,6 +100,13 @@ require 'options'
 -- [[ Basic Keymaps ]]
 require 'keymaps'
 
+-- [[ Filetype Detection ]]
+vim.filetype.add {
+  extension = {
+    pgsql = 'sql',
+  },
+}
+
 -- [[ Install `lazy.nvim` plugin manager ]]
 require 'lazy-bootstrap'
 
