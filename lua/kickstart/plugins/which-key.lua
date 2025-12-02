@@ -62,6 +62,8 @@ return {
         { '<leader>s', group = '[S]earch' },
         { '<leader>t', group = '[T]oggle' },
         { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
+        { '<leader>n', group = '+neominimap' }, -- group label
+        { '<leader>nbt', desc = 'Neominimap: Buffer toggle' }, -- the one you forget
       },
     },
   },

@@ -110,6 +110,35 @@ map('v', 'gy', '"+y', { desc = '[G]lobal Yank selection to system clipboard' })
 map('v', 'gp', '"+p', { desc = '[G]lobal Paste over selection from system clipboard' })
 -- ---------------------------------------------
 
+-- ============================================================
+-- macOS-style text navigation for ONLY Kitty
+-- (see advanced-Neovim for comments on signals sent by other terminal emulators)
+-- ============================================================
+-- Cmd  ←/→ : start/end of line
+-- Opt  ←/→ : word left/right
+
+-- ---------- INSERT MODE ----------
+-- Use <C-o>{motion} so we reuse normal-mode motions safely.
+map('i', '<M-Left>', '<C-o>b') -- word left
+map('i', '<M-Right>', '<C-o>w') -- word right
+map('i', '<D-Left>', '<C-o>0') -- start of line
+map('i', '<D-Right>', '<C-o>$') -- end of line
+
+-- ---------- COMMAND-LINE MODE (:, /, ?) ----------
+-- Rely on built-in command-line editing keys.
+map('c', '<M-Left>', '<C-Left>') -- word left
+map('c', '<M-Right>', '<C-Right>') -- word right
+map('c', '<D-Left>', '<Home>') -- start of line
+map('c', '<D-Right>', '<End>') -- end of line
+
+-- ---------- NORMAL MODE ----------
+map('n', '<M-Left>', 'b') -- word left
+map('n', '<M-Right>', 'w') -- word right
+map('n', '<D-Left>', '0') -- start of line
+map('n', '<D-Right>', '$') -- end of line
+
+-- ============================================================
+
 -- LEGACY CLIPBOARD BEHAVIOR START --------------------------------------------------------------
 
 -- Allow clipboard copy paste in neovim (Neovide specific for <D-*> keys)
