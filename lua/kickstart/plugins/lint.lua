@@ -10,6 +10,8 @@ return {
         sql = { 'sqlfluff' },
         mysql = { 'sqlfluff' },
         plsql = { 'sqlfluff' },
+        python = { 'ruff' },
+        lua = { 'luacheck' },
       }
 
       -- To allow other plugins to add linters to require('lint').linters_by_ft,
